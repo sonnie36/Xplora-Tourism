@@ -20,8 +20,6 @@ class AdminService {
     createTour(tour) {
         return __awaiter(this, void 0, void 0, function* () {
             let pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
-            console.log(tour.title);
-            console.log("Tour object:", tour);
             let result = yield (yield pool.request()
                 .input('id', (0, uuid_1.v4)())
                 .input('title', tour.title)
@@ -36,78 +34,56 @@ class AdminService {
                 .input('availableSlots', tour.availableSlots)
                 .execute("AddTour")).rowsAffected;
             if (result[0] == 1) {
-                return {
-                    message: "Account created successfully"
-                };
+                return { message: "Tour created successfully" };
             }
             else {
-                return {
-                    error: "Unable to create Account"
-                };
+                return { error: "Unable to create tour" };
             }
         });
     }
     updateTour(tour) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
-                const result = yield pool.request()
-                    .input('id', tour.id)
-                    .input('title', tour.title)
-                    .input('description', tour.description)
-                    .input('destination', tour.destination)
-                    .input('duration', tour.duration)
-                    .input('price', tour.price)
-                    .input('tourType', tour.tourType)
-                    .input('startDate', tour.startDate)
-                    .input('endDate', tour.endDate)
-                    .input('maxParticipants', tour.maxParticipants)
-                    .input('availableSlots', tour.availableSlots)
-                    .execute('UpdateTour');
-                if (result.rowsAffected[0] === 1) {
-                    return { message: 'Tour updated successfully' };
-                }
-                else {
-                    return { error: 'Unable to update tour' };
-                }
+            const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            const result = yield pool.request()
+                .input('id', tour.id)
+                .input('title', tour.title)
+                .input('description', tour.description)
+                .input('destination', tour.destination)
+                .input('duration', tour.duration)
+                .input('price', tour.price)
+                .input('tourType', tour.tourType)
+                .input('startDate', tour.startDate)
+                .input('endDate', tour.endDate)
+                .input('maxParticipants', tour.maxParticipants)
+                .input('availableSlots', tour.availableSlots)
+                .execute('UpdateTour');
+            if (result.rowsAffected[0] === 1) {
+                return { message: 'Tour updated successfully' };
             }
-            catch (error) {
-                console.error('Error updating tour:', error);
-                throw error;
+            else {
+                return { error: 'Unable to update tour' };
             }
         });
     }
     softDeleteTour(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
-                const result = yield pool.request()
-                    .input('id', id)
-                    .execute('SoftDeleteTour');
-                if (result.rowsAffected[0] === 1) {
-                    return { message: 'Tour deleted successfully' };
-                }
-                else {
-                    return { error: 'Unable to delete tour' };
-                }
+            const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            const result = yield pool.request()
+                .input('id', id)
+                .execute('SoftDeleteTour');
+            if (result.rowsAffected[0] === 1) {
+                return { message: 'Tour deleted successfully' };
             }
-            catch (error) {
-                console.error('Error deleting tour:', error);
-                throw error;
+            else {
+                return { error: 'Unable to delete tour' };
             }
         });
     }
     getAllTours() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                let pool = mssql_1.default.connect(sql_config_1.sqlConfig);
-                const result = (yield pool).request()
-                    .execute('GetAllTours');
-            }
-            catch (error) {
-                console.error('Error getting all tours:', error);
-                throw error;
-            }
+            const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            const result = yield pool.request().execute('GetAllTours');
+            return result.recordset;
         });
     }
 }

@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/admin/updateTour/c9ad99d5-ea51-42f8-b33e-fd21293151f3
+PUT http://localhost:3000/admin/updateTour/09ec4a70-b8ea-47fd-9b08-f68e6d692af7
 Content-Type: application/json
 
 {
@@ -31,9 +31,10 @@ Content-Type: application/json
     "availableSlots": 15
 }
 
+
 ###
-DELETE http://localhost:3000/admin/softDeleteTour/c9ad99d5-ea51-42f8-b33e-fd21293151f3
-Content-Type: application/json
+DELETE http://localhost:3000/admin/softDeleteTour/f1d0009a-0278-4a6b-b350-2219c8729bec
 ###
+
 GET http://localhost:3000/admin/getTours
-Content-Type: application/json
+

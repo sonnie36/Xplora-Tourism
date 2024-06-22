@@ -25,9 +25,6 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
-                console.log(req.body);
-                console.log("Request body:", req.body);
-                console.log("Title:", title); // Ensure title is not undefined
                 let response = yield adminService.createTour({
                     title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots
                 });
@@ -41,7 +38,7 @@ class AdminController {
     updateTour(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { id } = req.params; // Extract ID from URL params
+                const { id } = req.params; // Ensure this is extracted from params
                 const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
                 const response = yield adminService.updateTour({
                     id, title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots
@@ -57,7 +54,7 @@ class AdminController {
     softDeleteTour(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { id } = req.params; // Extract ID from URL params
+                const { id } = req.params;
                 const response = yield adminService.softDeleteTour(id);
                 return res.json(response);
             }
