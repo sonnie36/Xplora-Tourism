@@ -1,0 +1,6 @@
+CREATE PROCEDURE GetAllTours
+AS 
+
+BEGIN
+SELECT * FROM tours WHERE isDeleted =0;
+END;
