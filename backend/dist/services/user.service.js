@@ -20,7 +20,7 @@ class UserService {
     createUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             let pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
-            let result = yield (yield pool.request()
+            let result = yield pool.request()
                 .input('id', (0, uuid_1.v4)())
                 .input('username', user.username)
                 .input('email', user.email)
@@ -28,13 +28,42 @@ class UserService {
                 .input('role', user.role)
                 .input('firstName', user.firstName)
                 .input('lastName', user.lastName)
-                .execute("CreateUser")).rowsAffected;
-            if (result[0] == 1) {
-                return { message: "User created successfully" };
+                .input('profilePhoto', user.profilePhoto || null)
+                .execute('CreateUser');
+            if (result.rowsAffected[0] === 1) {
+                return { message: 'User created successfully' };
             }
             else {
-                return { error: "Unable to create user" };
+                return { error: 'Unable to create user' };
             }
+        });
+    }
+    updateUser(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            const result = yield pool.request()
+                .input('id', user.id)
+                .input('username', user.username)
+                .input('email', user.email)
+                .input('password', user.password)
+                .input('role', user.role)
+                .input('firstName', user.firstName)
+                .input('lastName', user.lastName)
+                .input('profilePhoto', user.profilePhoto || null)
+                .execute('UpdateUser');
+            if (result.rowsAffected[0] === 1) {
+                return { message: 'User updated successfully' };
+            }
+            else {
+                return { error: 'Unable to update user' };
+            }
+        });
+    }
+    getAllUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            let result = yield pool.request().execute('GetAllUsers');
+            return result.recordset;
         });
     }
 }

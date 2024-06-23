@@ -6,12 +6,12 @@ CREATE PROCEDURE CreateUser
     @role VARCHAR(20),
     @firstName VARCHAR(50),
     @lastName VARCHAR(50),
-    @profilePhotoUrl VARCHAR(255) = NULL  -- Default to NULL if not provided
+    @profilePhoto VARCHAR(255)   -- Default to NULL if not provided
 AS
 BEGIN
   
-        INSERT INTO Users (id, username, password, email, role, firstName, lastName, profilePhotoUrl, createdAt, updatedAt)
-        VALUES (@id, @username, @password, @email, @role, @firstName, @lastName, @profilePhotoUrl, GETDATE(), GETDATE());
+        INSERT INTO Users (id, username, password, email, role, firstName, lastName, profilePhoto, createdAt, updatedAt)
+        VALUES (@id, @username, @password, @email, @role, @firstName, @lastName, @profilePhoto, GETDATE(), GETDATE());
 
 END;
 

@@ -6,6 +6,24 @@ Content-Type: application/json
     "email": "salomemwati@yopmail.com",
     "password": "Password123",
     "role": "user",
+    "profilePhoto":"image1",
     "firstName": "Salome",
     "lastName": "Mwati"
 }
+
+### 
+PUT http://localhost:3000/user/updateUser/1c7d0bd5-e666-4d2a-8078-debaba1644e3
+Content-Type: application/json
+
+{
+    "username": "Sonnie",
+    "email": "salome@yopmail.com",
+    "password": "Password123",
+    "role": "user",
+    "profilePhoto": "image2",
+    "firstName": "Salome",
+    "lastName": "Mwati"
+}
+    
+###
+GET http://localhost:3000/user/getUsers

@@ -16,10 +16,49 @@ class UserController {
     addUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { username, email, password, role, profilePhoto, createdAt, updatedAt, firstName, lastName } = req.body;
+                let { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
                 let response = yield userService.createUser({
-                    username, email, password, role, profilePhoto, firstName, lastName
+                    username,
+                    email,
+                    password,
+                    role,
+                    profilePhoto,
+                    firstName,
+                    lastName
                 });
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
+    updateUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let { id } = req.params;
+                const { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
+                let response = yield userService.updateUser({
+                    id,
+                    username,
+                    email,
+                    password,
+                    role,
+                    profilePhoto,
+                    firstName,
+                    lastName
+                });
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
+    getAllUsers(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let response = yield userService.getAllUsers();
                 return res.json(response);
             }
             catch (error) {

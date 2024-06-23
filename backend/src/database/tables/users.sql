@@ -6,7 +6,7 @@ CREATE TABLE Users (
     role VARCHAR(20) NOT NULL,  -- 'user' or 'admin'
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
-    profilePhotoUrl VARCHAR(255),  -- Optional field for storing profile photo URL
+    profilePhoto VARCHAR(255),  -- Optional field for storing profile photo URL
     createdAt DATETIME DEFAULT GETDATE(),
     updatedAt DATETIME DEFAULT GETDATE() 
 );
