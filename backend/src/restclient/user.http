@@ -1,0 +1,11 @@
+POST http://localhost:3000/user/addUser
+Content-Type: application/json
+
+{
+    "username": "Sonnie",
+    "email": "salomemwati@yopmail.com",
+    "password": "Password123",
+    "role": "user",
+    "firstName": "Salome",
+    "lastName": "Mwati"
+}

@@ -29,9 +29,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const sql_config_1 = require("./config/sql.config");
 const admin_router_1 = __importDefault(require("./routers/admin.router"));
+const user_router_1 = __importDefault(require("./routers/user.router"));
 const app = (0, express_1.default)();
 app.use((0, express_1.json)());
 app.use('/admin', admin_router_1.default);
+app.use('/user', user_router_1.default);
 (0, sql_config_1.testConnection)();
 const PORT = 3000;
 app.listen(PORT, () => {

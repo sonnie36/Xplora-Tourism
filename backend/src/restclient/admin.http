@@ -33,7 +33,7 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/admin/softDeleteTour/f1d0009a-0278-4a6b-b350-2219c8729bec
+DELETE http://localhost:3000/admin/softDeleteTour/b790db3e-b32c-409e-a9a3-bd23699e1891
 ###
 
 GET http://localhost:3000/admin/getTours
