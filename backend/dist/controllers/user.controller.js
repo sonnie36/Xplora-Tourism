@@ -11,21 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const user_service_1 = require("../services/user.service");
-let userService = new user_service_1.UserService();
+const Auth_service_1 = require("../services/Auth.service");
+const userService = new user_service_1.UserService();
+const authService = new Auth_service_1.AuthService();
 class UserController {
     addUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
-                let response = yield userService.createUser({
-                    username,
-                    email,
-                    password,
-                    role,
-                    profilePhoto,
-                    firstName,
-                    lastName
-                });
+                const { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
+                const response = yield userService.createUser({ username, email, password, role, profilePhoto, firstName, lastName });
                 return res.json(response);
             }
             catch (error) {
@@ -36,18 +30,9 @@ class UserController {
     updateUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { id } = req.params;
+                const { id } = req.params;
                 const { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
-                let response = yield userService.updateUser({
-                    id,
-                    username,
-                    email,
-                    password,
-                    role,
-                    profilePhoto,
-                    firstName,
-                    lastName
-                });
+                const response = yield userService.updateUser({ id, username, email, password, role, profilePhoto, firstName, lastName });
                 return res.json(response);
             }
             catch (error) {
@@ -58,7 +43,32 @@ class UserController {
     getAllUsers(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let response = yield userService.getAllUsers();
+                const response = yield userService.getAllUsers();
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
+    login(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { email, password } = req.body;
+                const response = yield authService.login({ email, password });
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
+    resetPassword(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { id } = req.params;
+                const { newPassword } = req.body;
+                const response = yield authService.resetPassword(id, newPassword);
                 return res.json(response);
             }
             catch (error) {

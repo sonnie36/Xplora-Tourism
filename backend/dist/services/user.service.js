@@ -14,17 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const mssql_1 = __importDefault(require("mssql"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const sql_config_1 = require("../config/sql.config");
 const uuid_1 = require("uuid");
 class UserService {
     createUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             let pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            // Hash the password before storing it
+            const hashedPassword = bcryptjs_1.default.hashSync(user.password, 10);
             let result = yield pool.request()
                 .input('id', (0, uuid_1.v4)())
                 .input('username', user.username)
                 .input('email', user.email)
-                .input('password', user.password)
+                .input('password', hashedPassword)
                 .input('role', user.role)
                 .input('firstName', user.firstName)
                 .input('lastName', user.lastName)
@@ -41,11 +44,13 @@ class UserService {
     updateUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            // Hash the password before updating it
+            const hashedPassword = bcryptjs_1.default.hashSync(user.password, 10);
             const result = yield pool.request()
                 .input('id', user.id)
                 .input('username', user.username)
                 .input('email', user.email)
-                .input('password', user.password)
+                .input('password', hashedPassword)
                 .input('role', user.role)
                 .input('firstName', user.firstName)
                 .input('lastName', user.lastName)

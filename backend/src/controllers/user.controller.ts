@@ -1,21 +1,15 @@
 import { Request, Response } from 'express';
 import { UserService } from '../services/user.service';
+import { AuthService } from '../services/Auth.service';
 
-let userService = new UserService();
+const userService = new UserService();
+const authService = new AuthService();
 
 export class UserController {
     async addUser(req: Request, res: Response) {
         try {
-            let { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
-            let response = await userService.createUser({
-                username,
-                email,
-                password,
-                role,
-                profilePhoto,
-                firstName,
-                lastName
-            });
+            const { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
+            const response = await userService.createUser({ username, email, password, role, profilePhoto, firstName, lastName });
             return res.json(response);
         } catch (error) {
             return res.json({ error });
@@ -24,19 +18,9 @@ export class UserController {
 
     async updateUser(req: Request, res: Response) {
         try {
-            let { id } = req.params;
-
+            const { id } = req.params;
             const { username, email, password, role, profilePhoto, firstName, lastName } = req.body;
-            let response = await userService.updateUser({
-                id,
-                username,
-                email,
-                password,
-                role,
-                profilePhoto,
-                firstName,
-                lastName
-            });
+            const response = await userService.updateUser({ id, username, email, password, role, profilePhoto, firstName, lastName });
             return res.json(response);
         } catch (error) {
             return res.json({ error });
@@ -45,7 +29,28 @@ export class UserController {
 
     async getAllUsers(req: Request, res: Response) {
         try {
-            let response = await userService.getAllUsers();
+            const response = await userService.getAllUsers();
+            return res.json(response);
+        } catch (error) {
+            return res.json({ error });
+        }
+    }
+
+    async login(req: Request, res: Response) {
+        try {
+            const { email, password } = req.body;
+            const response = await authService.login({ email, password });
+            return res.json(response);
+        } catch (error) {
+            return res.json({ error });
+        }
+    }
+
+    async resetPassword(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            const { newPassword } = req.body;
+            const response = await authService.resetPassword(id, newPassword);
             return res.json(response);
         } catch (error) {
             return res.json({ error });
