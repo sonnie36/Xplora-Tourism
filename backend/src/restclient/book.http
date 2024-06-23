@@ -1,0 +1,7 @@
+POST http://localhost:3000/booking/bookTour
+Content-Type: application/json
+
+{
+    "userId": "8276fa65-9e05-474c-aa36-790f3c5e1aa4",
+    "tourId": "5ac71cde-8957-478f-b510-f682ac02e59c"
+}

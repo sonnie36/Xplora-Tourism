@@ -1,0 +1,13 @@
+POST http://localhost:3000/review/addReview
+Content-Type: application/json
+
+{
+    "userId": "8276fa65-9e05-474c-aa36-790f3c5e1aa4",
+    "tourId": "5ac71cde-8957-478f-b510-f682ac02e59c",
+    "reviewText": "This tour was fantastic! Highly recommend.",
+    "rating": 5
+}
+
+### Get all reviews for a tour
+GET http://localhost:3000/review/getReviews/5ac71cde-8957-478f-b510-f682ac02e59c
+Content-Type: application/json

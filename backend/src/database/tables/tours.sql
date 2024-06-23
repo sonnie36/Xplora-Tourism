@@ -1,5 +1,5 @@
 CREATE TABLE tours (
-    id VARCHAR(255), 
+    id VARCHAR(255) PRIMARY KEY, 
     title VARCHAR(255) NOT NULL,      
     description VARCHAR(MAX) NOT NULL,
     destination VARCHAR(255) NOT NULL,

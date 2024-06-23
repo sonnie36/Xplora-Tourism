@@ -71,4 +71,14 @@ export class AdminService {
         const result = await pool.request().execute('GetAllTours');
         return result.recordset;
     }
+    
+        async getToursByType(tourType: string) {
+            const pool = await mssql.connect(sqlConfig);
+            const result = await pool.request()
+                .input('tourType', tourType)
+                .execute('GetToursByType');
+            return result.recordset;
+        }
+    
+    
 }

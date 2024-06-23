@@ -86,5 +86,14 @@ class AdminService {
             return result.recordset;
         });
     }
+    getToursByType(tourType) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            const result = yield pool.request()
+                .input('tourType', tourType)
+                .execute('GetToursByType');
+            return result.recordset;
+        });
+    }
 }
 exports.AdminService = AdminService;

@@ -76,5 +76,17 @@ class AdminController {
             }
         });
     }
+    getToursByType(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { tourType } = req.params;
+                const response = yield adminService.getToursByType(tourType);
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
 }
 exports.AdminController = AdminController;

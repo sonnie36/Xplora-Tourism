@@ -8,4 +8,5 @@ admin_router.post('/addTour', controller.addTour);
 admin_router.put('/updateTour/:id', controller.updateTour);
 admin_router.delete('/softDeleteTour/:id', controller.softDeleteTour); // Added '/' before :id
 admin_router.get('/getTours', controller.getAllTours);
+admin_router.get('/getToursByType/:tourType', controller.getToursByType);
 exports.default = admin_router;

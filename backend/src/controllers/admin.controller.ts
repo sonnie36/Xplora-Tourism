@@ -67,4 +67,13 @@ export class AdminController {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
     }
+    async getToursByType(req: Request, res: Response) {
+        try {
+            const { tourType } = req.params;
+            const response = await adminService.getToursByType(tourType);
+            return res.json(response);
+        } catch (error) {
+            return res.json({ error });
+        }
+    }
 }
