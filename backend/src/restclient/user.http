@@ -2,13 +2,13 @@ POST http://localhost:3000/user/addUser
 Content-Type: application/json
 
 {
-    "username": "joymwati",
-    "email": "joywangari@yopmail.com",
-    "password": "1234567",
+    "username": "carol",
+    "email": "carol@yopmail.com",
+    "password": "12345678",
     "role": "user",
     "profilePhoto": "image1",
-    "firstName": "Joy",
-    "lastName": "Mwati"
+    "firstName": "Carol",
+    "lastName": "Carol"
 }
 
 ### Login
@@ -16,12 +16,12 @@ POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-    "email": "joymwati@yopmail.com",
-    "password": "123"
+    "email": "carol@yopmail.com",
+    "password": "12345678"
 }
 ### Get all users
 GET http://localhost:3000/user/getUsers
-Authorization: Bearer <JWT_TOKEN>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyYjlhNDI0LTRkYTAtNDQ1Ny1iNDJiLWY1M2QxYjYwZTI0YSIsInVzZXJuYW1lIjoiY2Fyb2wiLCJlbWFpbCI6ImNhcm9sQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJDYXJvbCIsImxhc3ROYW1lIjoiQ2Fyb2wiLCJwcm9maWxlUGhvdG8iOiJpbWFnZTEiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI0VDE1OjU5OjA4LjMyN1oiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI0VDE1OjU5OjA4LjMyN1oiLCJpYXQiOjE3MTkyMzM5ODMsImV4cCI6MTcxOTI0MTE4M30.GcTTI69VoNdJc9GNwWPxtiGHcVpQ13QunN3plt-QcWA
 
 ### Reset password
 PUT http://localhost:3000/user/resetPassword/

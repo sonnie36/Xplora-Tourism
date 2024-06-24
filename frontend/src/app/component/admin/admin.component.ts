@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  styleUrls: ['./admin.component.css']  // Fixed typo 'styleUrl' to 'styleUrls'
 })
 export class AdminComponent implements OnInit {
   
@@ -28,7 +28,20 @@ export class AdminComponent implements OnInit {
     availableSlots: 0,
     image: ''
   };
-  selectedTour: TourDetails | null = null;
+  selectedTour: TourDetails = {
+    id: '',
+    title: '',
+    description: '',
+    destination: '',
+    duration: 0,
+    price: 0,
+    tourType: '',
+    startDate: '',
+    endDate: '',
+    maxParticipants: 0,
+    availableSlots: 0,
+    image: ''
+  };  // Initialize to avoid null checks
   showAddTourForm = false;
   showUpdateTourForm = false;
   successMessage = '';
@@ -50,6 +63,10 @@ export class AdminComponent implements OnInit {
     this.showAddTourForm = !this.showAddTourForm;
     this.successMessage = '';
     this.errorMessage = '';
+  }
+
+  closeUpdateTourForm(): void {
+    this.showUpdateTourForm = false;
   }
 
   addTour(): void {
@@ -94,7 +111,7 @@ export class AdminComponent implements OnInit {
           if (index !== -1) {
             this.tours[index] = updatedTour;
           }
-          this.showUpdateTourForm = false;
+          this.showUpdateTourForm = true;
           this.successMessage = 'Tour updated successfully!';
           this.errorMessage = '';
         },

@@ -13,55 +13,162 @@
       <h2>Manage Tours</h2>
       <button class="btn add-tour" (click)="toggleAddTourForm()">Add New Tour</button>
 
-      <div *ngIf="showAddTourForm" class="add-tour-form">
-        <form (ngSubmit)="addTour()">
-          <!-- Add Tour Form Fields Here -->
-          <button type="submit" class="btn">Submit</button>
-        </form>
-      </div>
-
-      <div *ngIf="showUpdateTourForm" class="update-tour-form">
-        <form (ngSubmit)="saveUpdatedTour()">
-          <!-- Update Tour Form Fields Here -->
-          <button type="submit" class="btn">Save Changes</button>
-        </form>
-      </div>
-
-      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
-      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-
-      <div class="tour-list">
-        <h3>Existing Tours</h3>
-        <div class="tours">
-          <div *ngFor="let tour of tours" class="card">
-            <h3>{{ tour.title }}</h3>
-            <img [src]="tour.image" class="image" alt="">
-            <p>{{ tour.description }}</p>
-            <p>{{ tour.destination }}</p>
-            <h6>{{ tour.duration }} days</h6>
-            <h4>${{ tour.price }}</h4>
-            <p>{{ tour.tourType }}</p>
-            <div class="dates">
-              <p>{{ tour.startDate }} to </p>
-              <p>{{ tour.endDate }}</p>
+      <div id="addTourModal" class="modal" [ngStyle]="{'display': showAddTourForm ? 'block' : 'none'}">
+        <div class="modal-content">
+          <span class="close" (click)="toggleAddTourForm()">&times;</span>
+          <form (ngSubmit)="addTour()">
+            <div *ngIf="showAddTourForm" class="add-tour-form">
+              <form (ngSubmit)="addTour()">
+                <div class="form-group">
+                  <label>Title</label>
+                  <input [(ngModel)]="newTour.title" name="title" required>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input [(ngModel)]="newTour.description" name="description" required>
+                </div>
+                <div class="form-group">
+                  <label>Destination</label>
+                  <input [(ngModel)]="newTour.destination" name="destination" required>
+                </div>
+                <div class="form-group">
+                  <label>Duration (days)</label>
+                  <input type="number" [(ngModel)]="newTour.duration" name="duration" required>
+                </div>
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="number" [(ngModel)]="newTour.price" name="price" required>
+                </div>
+                <div class="form-group">
+                  <label>Tour Type</label>
+                  <input [(ngModel)]="newTour.tourType" name="tourType" required>
+                </div>
+                <div class="form-group">
+                  <label>Start Date</label>
+                  <input type="date" [(ngModel)]="newTour.startDate" name="startDate" required>
+                </div>
+                <div class="form-group">
+                  <label>End Date</label>
+                  <input type="date" [(ngModel)]="newTour.endDate" name="endDate" required>
+                </div>
+                <div class="form-group">
+                  <label>Max Participants</label>
+                  <input type="number" [(ngModel)]="newTour.maxParticipants" name="maxParticipants" required>
+                </div>
+                <div class="form-group">
+                  <label>Available Slots</label>
+                  <input type="number" [(ngModel)]="newTour.availableSlots" name="availableSlots" required>
+                </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input [(ngModel)]="newTour.image" name="image" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              </form>
             </div>
-            <p>Max: {{ tour.maxParticipants }}</p>
-            <p>Available: {{ tour.availableSlots }}</p>
-            <button (click)="confirmDeleteTour(tour.id)" class="btn delete-tour">Delete</button>
-            <button (click)="editTour(tour)" class="btn update-tour">Update</button>
-          </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="updateTourModal" class="modal" [ngStyle]="{'display': showUpdateTourForm ? 'block' : 'none'}">
+        <div class="modal-content">
+          <span class="close" (click)="closeUpdateTourForm()">&times;</span>
+          <form (ngSubmit)="saveUpdatedTour()">
+            <div *ngIf="showUpdateTourForm" class="update-tour-form">
+              <form (ngSubmit)="saveUpdatedTour()">
+                <div class="form-group">
+                  <label>Title</label>
+                  <input [(ngModel)]="selectedTour.title" name="title" required>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input [(ngModel)]="selectedTour.description" name="description" required>
+                </div>
+                <div class="form-group">
+                  <label>Destination</label>
+                  <input [(ngModel)]="selectedTour.destination" name="destination" required>
+                </div>
+                <div class="form-group">
+                  <label>Duration (days)</label>
+                  <input type="number" [(ngModel)]="selectedTour.duration" name="duration" required>
+                </div>
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="number" [(ngModel)]="selectedTour.price" name="price" required>
+                </div>
+                <div class="form-group">
+                  <label>Tour Type</label>
+                  <input [(ngModel)]="selectedTour.tourType" name="tourType" required>
+                </div>
+                <div class="form-group">
+                  <label>Start Date</label>
+                  <input type="date" [(ngModel)]="selectedTour.startDate" name="startDate" required>
+                </div>
+                <div class="form-group">
+                  <label>End Date</label>
+                  <input type="date" [(ngModel)]="selectedTour.endDate" name="endDate" required>
+                </div>
+                <div class="form-group">
+                  <label>Max Participants</label>
+                  <input type="number" [(ngModel)]="selectedTour.maxParticipants" name="maxParticipants" required>
+                </div>
+                <div class="form-group">
+                  <label>Available Slots</label>
+                  <input type="number" [(ngModel)]="selectedTour.availableSlots" name="availableSlots" required>
+                </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input [(ngModel)]="selectedTour.image" name="image" required>
+                </div>
+                <button type="submit" class="btn">Save</button>
+              </form>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="tour-cards">
+        <div class="tour-card" *ngFor="let tour of tours">
+          <img [src]="tour.image" alt="Tour Image">
+          <h3>{{ tour.title }}</h3>
+          <p>{{ tour.description }}</p>
+          <p><strong>Destination:</strong> {{ tour.destination }}</p>
+          <p><strong>Duration:</strong> {{ tour.duration }} days</p>
+          <p><strong>Price:</strong> {{ tour.price | currency }}</p>
+          <button class="btn edit" (click)="editTour(tour)">Edit</button>
+          <button class="btn delete" (click)="confirmDeleteTour(tour.id)">Delete</button>
         </div>
       </div>
     </div>
 
     <div id="manage-profile" class="manage-profile">
       <h2>Manage Profile</h2>
+      <p>This section allows you to manage your profile information.</p>
+      <form>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" name="username" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Save Changes</button>
+      </form>
     </div>
 
     <div id="manage-users" class="manage-users">
       <h2>Manage Users</h2>
-      <div class="user-list">
-      </div>
+      <p>This section allows you to manage user accounts.</p>
+      <ul>
+        <li>User 1 <button class="btn">Edit</button> <button class="btn">Delete</button></li>
+        <li>User 2 <button class="btn">Edit</button> <button class="btn">Delete</button></li>
+        <li>User 3 <button class="btn">Edit</button> <button class="btn">Delete</button></li>
+      </ul>
     </div>
   </div>
 </div>
