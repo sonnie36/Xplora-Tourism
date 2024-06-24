@@ -1,18 +1,74 @@
-<p>admin works!</p>
 <div class="admin-dashboard-container">
-    <h1>Admin Dashboard</h1>
-    <div class="manage-tours">
-      <h2>Manage Tours</h2>
-      <button class="btn add-tour">Add New Tour</button>
-      <div class="tour-list">
-        <!-- Tour items go here -->
-      </div>
+  <h1>Admin Dashboard</h1>
+
+  <div class="manage-tours">
+    <h2>Manage Tours</h2>
+    <button class="btn add-tour" (click)="toggleAddTourForm()">Add New Tour</button>
+
+    <div *ngIf="showAddTourForm" class="add-tour-form">
+      <form (ngSubmit)="addTour()">
+        <div class="form-group">
+          <label>Title</label>
+          <input [(ngModel)]="newTour.title" name="title" required>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input [(ngModel)]="newTour.description" name="description" required>
+        </div>
+        <div class="form-group">
+          <label>Destination</label>
+          <input [(ngModel)]="newTour.destination" name="destination" required>
+        </div>
+        <div class="form-group">
+          <label>Duration (days)</label>
+          <input type="number" [(ngModel)]="newTour.duration" name="duration" required>
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" [(ngModel)]="newTour.price" name="price" required>
+        </div>
+        <div class="form-group">
+          <label>Tour Type</label>
+          <input [(ngModel)]="newTour.tourType" name="tourType" required>
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" [(ngModel)]="newTour.startDate" name="startDate" required>
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="date" [(ngModel)]="newTour.endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+          <label>Max Participants</label>
+          <input type="number" [(ngModel)]="newTour.maxParticipants" name="maxParticipants" required>
+        </div>
+        <div class="form-group">
+          <label>Available Slots</label>
+          <input type="number" [(ngModel)]="newTour.availableSlots" name="availableSlots" required>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
     </div>
-    <div class="manage-users">
-      <h2>Manage Users</h2>
-      <div class="user-list">
-        <!-- User items go here -->
-      </div>
+
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <div class="tour-list">
+      <h3>Existing Tours</h3>
+      <ul>
+        <li *ngFor="let tour of tours">
+          {{ tour.title }} - {{ tour.description }} - {{ tour.destination }} - {{ tour.duration }} days - ${{ tour.price }} - {{ tour.tourType }} - {{ tour.startDate }} to {{ tour.endDate }} - Max: {{ tour.maxParticipants }} - Available: {{ tour.availableSlots }}
+          <!-- <button (click)="deleteTour(tour.id)" class="btn delete-tour">Delete</button> -->
+        </li>
+      </ul>
     </div>
   </div>
-  
+
+  <div class="manage-users">
+    <h2>Manage Users</h2>
+    <div class="user-list">
+      <!-- User items go here -->
+    </div>
+  </div>
+</div>

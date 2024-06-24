@@ -9,3 +9,17 @@ export interface User {
     lastName: string;
   }
   
+  export interface TourDetails {
+    id?:string,
+    title: string;
+    description: string;
+    destination: string;
+    duration: number;
+    price: number;
+    tourType: string;
+    startDate: string;
+    endDate: string;
+    maxParticipants: number;
+    availableSlots: number;
+  }
+  
