@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports:[CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
@@ -26,9 +26,11 @@ export class AdminComponent implements OnInit {
     endDate: '',
     maxParticipants: 0,
     availableSlots: 0,
-    image:''
+    image: ''
   };
+  selectedTour: TourDetails | null = null;
   showAddTourForm = false;
+  showUpdateTourForm = false;
   successMessage = '';
   errorMessage = '';
 
@@ -66,7 +68,7 @@ export class AdminComponent implements OnInit {
           endDate: '',
           maxParticipants: 0,
           availableSlots: 0,
-          image:''
+          image: ''
         };
         this.showAddTourForm = false;
         this.successMessage = 'Tour added successfully!';
@@ -79,18 +81,48 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  // updateTour(tour: TourDetails): void {
-  //   this.tourService.updateTour(tour.id, tour).subscribe(updatedTour => {
-  //     const index = this.tours.findIndex(t => t.id === updatedTour.id);
-  //     if (index !== -1) {
-  //       this.tours[index] = updatedTour;
-  //     }
-  //   });
-  // }
+  editTour(tour: TourDetails): void {
+    this.selectedTour = { ...tour };
+    this.showUpdateTourForm = true;
+  }
 
-  // deleteTour(id: string) {
-  //   this.tourService.deleteTour(id).subscribe(() => {
-  //     this.tours = this.tours.filter(tour => tour.id !== id);
-  //   });
-  // }
+  saveUpdatedTour(): void {
+    if (this.selectedTour) {
+      this.tourService.updateTour(this.selectedTour.id, this.selectedTour).subscribe(
+        updatedTour => {
+          const index = this.tours.findIndex(t => t.id === updatedTour.id);
+          if (index !== -1) {
+            this.tours[index] = updatedTour;
+          }
+          this.showUpdateTourForm = false;
+          this.successMessage = 'Tour updated successfully!';
+          this.errorMessage = '';
+        },
+        error => {
+          this.errorMessage = 'Error updating tour. Please try again.';
+          this.successMessage = '';
+        }
+      );
+    }
+  }
+
+  confirmDeleteTour(id: string): void {
+    if (confirm('Are you sure you want to delete this tour?')) {
+      this.deleteTour(id);
+    }
+  }
+
+  deleteTour(id: string): void {
+    this.tourService.deleteTour(id).subscribe(
+      () => {
+        this.tours = this.tours.filter(tour => tour.id !== id);
+        this.successMessage = 'Tour deleted successfully!';
+        this.errorMessage = '';
+      },
+      error => {
+        this.errorMessage = 'Unable to delete tour. Please try again.';
+        this.successMessage = '';
+      }
+    );
+  }
 }

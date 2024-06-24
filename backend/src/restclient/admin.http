@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### updateTour
-PUT http://localhost:3000/admin/updateTour/5ac71cde-8957-478f-b510-f682ac02e59c
+PUT http://localhost:3000/admin/updateTour/f06f8dd7-39cf-4cf7-8288-808e012786ee
 Content-Type: application/json
 
 {
@@ -35,7 +35,7 @@ Content-Type: application/json
 
 
 ### delete Tour
-DELETE http://localhost:3000/admin/softDeleteTour/a6b19914-5929-4a12-aa38-aee863a2e7b8
+DELETE http://localhost:3000/admin/softDeleteTour/vab6c6f20-142f-41e3-afc1-31567e54d7fb
 
 ### get all tours
 GET http://localhost:3000/admin/getTours

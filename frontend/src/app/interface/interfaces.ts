@@ -10,7 +10,7 @@ export interface User {
   }
   
   export interface TourDetails {
-    id?:string,
+    id:string,
     title: string;
     description: string;
     destination: string;
@@ -23,4 +23,18 @@ export interface User {
     availableSlots: number;
     image?:string
   }
+export interface UpdateTour{
+    id: string;
+    title: string;
+    description: string;
+    destination: string;
+    duration: number;
+    price: number;
+    tourType: string;
+    startDate: string;
+    endDate: string;
+    maxParticipants: number;
+    availableSlots: number;
+    image?: string;
   
+}

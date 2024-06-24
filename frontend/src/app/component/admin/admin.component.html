@@ -1,90 +1,67 @@
 <div class="admin-dashboard-container">
-  <h1>Admin Dashboard</h1>
+  <div class="sidebar">
+    <h2>Admin Dashboard</h2>
+    <ul>
+      <li><a href="#manage-tours">Manage Tours</a></li>
+      <li><a href="#manage-profile">Manage Profile</a></li>
+      <li><a href="#manage-users">Manage Users</a></li>
+    </ul>
+  </div>
 
-  <div class="manage-tours">
-    <h2>Manage Tours</h2>
-    <button class="btn add-tour" (click)="toggleAddTourForm()">Add New Tour</button>
+  <div class="main-content">
+    <div id="manage-tours" class="manage-tours">
+      <h2>Manage Tours</h2>
+      <button class="btn add-tour" (click)="toggleAddTourForm()">Add New Tour</button>
 
-    <div *ngIf="showAddTourForm" class="add-tour-form">
-      <form (ngSubmit)="addTour()">
-        <div class="form-group">
-          <label>Title</label>
-          <input [(ngModel)]="newTour.title" name="title" required>
-        </div>
-        <div class="form-group">
-          <label>Description</label>
-          <input [(ngModel)]="newTour.description" name="description" required>
-        </div>
-        <div class="form-group">
-          <label>Destination</label>
-          <input [(ngModel)]="newTour.destination" name="destination" required>
-        </div>
-        <div class="form-group">
-          <label>Duration (days)</label>
-          <input type="number" [(ngModel)]="newTour.duration" name="duration" required>
-        </div>
-        <div class="form-group">
-          <label>Price</label>
-          <input type="number" [(ngModel)]="newTour.price" name="price" required>
-        </div>
-        <div class="form-group">
-          <label>Tour Type</label>
-          <input [(ngModel)]="newTour.tourType" name="tourType" required>
-        </div>
-        <div class="form-group">
-          <label>Start Date</label>
-          <input type="date" [(ngModel)]="newTour.startDate" name="startDate" required>
-        </div>
-        <div class="form-group">
-          <label>End Date</label>
-          <input type="date" [(ngModel)]="newTour.endDate" name="endDate" required>
-        </div>
-        <div class="form-group">
-          <label>Max Participants</label>
-          <input type="number" [(ngModel)]="newTour.maxParticipants" name="maxParticipants" required>
-        </div>
-        <div class="form-group">
-          <label>Available Slots</label>
-          <input type="number" [(ngModel)]="newTour.availableSlots" name="availableSlots" required>
-        </div>
-        <div class="form-group">
-          <label>Image</label>
-          <input [(ngModel)]="newTour.image" name="image" required>
-        </div>
-        <button type="submit" class="btn">Submit</button>
-      </form>
-    </div>
+      <div *ngIf="showAddTourForm" class="add-tour-form">
+        <form (ngSubmit)="addTour()">
+          <!-- Add Tour Form Fields Here -->
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </div>
 
-    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
-    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div *ngIf="showUpdateTourForm" class="update-tour-form">
+        <form (ngSubmit)="saveUpdatedTour()">
+          <!-- Update Tour Form Fields Here -->
+          <button type="submit" class="btn">Save Changes</button>
+        </form>
+      </div>
 
-    <div class="tour-list">
-      <h3>Existing Tours</h3>
-      <div class="tours">
-        <div *ngFor="let tour of tours" class="card">
-          <h3>{{ tour.title }}</h3>
-          <img src={{tour.image}} class="image" alt="">
-          <p> {{ tour.description }}</p>
-          <p>{{ tour.destination }} </p>
-          <h6>{{ tour.duration }}  days</h6>
-          <h4>${{ tour.price }}</h4>
-          <p>{{ tour.tourType }} </p>
-          <div class="dates">
-            <p>{{ tour.startDate }} to </p>
-            <p>{{ tour.endDate }}</p>
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+      <div class="tour-list">
+        <h3>Existing Tours</h3>
+        <div class="tours">
+          <div *ngFor="let tour of tours" class="card">
+            <h3>{{ tour.title }}</h3>
+            <img [src]="tour.image" class="image" alt="">
+            <p>{{ tour.description }}</p>
+            <p>{{ tour.destination }}</p>
+            <h6>{{ tour.duration }} days</h6>
+            <h4>${{ tour.price }}</h4>
+            <p>{{ tour.tourType }}</p>
+            <div class="dates">
+              <p>{{ tour.startDate }} to </p>
+              <p>{{ tour.endDate }}</p>
+            </div>
+            <p>Max: {{ tour.maxParticipants }}</p>
+            <p>Available: {{ tour.availableSlots }}</p>
+            <button (click)="confirmDeleteTour(tour.id)" class="btn delete-tour">Delete</button>
+            <button (click)="editTour(tour)" class="btn update-tour">Update</button>
           </div>
-          <p>Max: {{ tour.maxParticipants }}</p>
-          <p>Available: {{ tour.availableSlots }}</p>
-          <!-- <button (click)="deleteTour(tour.id)" class="btn delete-tour">Delete</button> -->
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="manage-users">
-    <h2>Manage Users</h2>
-    <div class="user-list">
-      <!-- User items go here -->
+    <div id="manage-profile" class="manage-profile">
+      <h2>Manage Profile</h2>
+    </div>
+
+    <div id="manage-users" class="manage-users">
+      <h2>Manage Users</h2>
+      <div class="user-list">
+      </div>
     </div>
   </div>
 </div>
