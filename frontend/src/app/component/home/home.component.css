@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F0F9F7;
+    color: #112C26;
+    margin: 0;
+    padding: 0;
+}
+
+.landing-page-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.hero-section {
+    background-color: #112C26;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.hero-content .explore-btn,
+.hero-content .book-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #43B19A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.features-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2.5rem;
+    color: #43B19A;
+    margin-bottom: 20px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    min-width: 250px;
+}
+
+.testimonials-section {
+    background-color: #112C26;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.testimonials-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #43B19A;
+}
+
+.testimonials {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.testimonial-item {
+    background-color: #F0F9F7;
+    color: #112C26;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 40%;
+    min-width: 300px;
+}
+
+.testimonial-item h4 {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    color: #43B19A;
+    margin-bottom: 20px;
+}
+
+.cta-section .cta-btn {
+    padding: 10px 20px;
+    background-color: #43B19A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,27 @@
+.dashboard-container {
+    padding: 20px;
+    background-color: #F0F9F7;
+    color: #112C26;
+  }
+  
+  h1, h2 {
+    color: #43B19A;
+  }
+  
+  .bookings, .reviews {
+    margin-top: 20px;
+  }
+  
+  .booking-list, .review-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .booking-list .booking-item, .review-list .review-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  

@@ -1,0 +1,37 @@
+.admin-dashboard-container {
+    padding: 20px;
+    background-color: #F0F9F7;
+    color: #112C26;
+  }
+  
+  h1, h2 {
+    color: #43B19A;
+  }
+  
+  .manage-tours, .manage-users {
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    background-color: #43B19A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .tour-list, .user-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tour-list .tour-item, .user-list .user-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  

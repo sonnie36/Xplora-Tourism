@@ -2,12 +2,12 @@ POST http://localhost:3000/user/addUser
 Content-Type: application/json
 
 {
-    "username": "Sonnie",
-    "email": "sonniemwati@yopmail.com",
-    "password": "123",
+    "username": "joymwati",
+    "email": "joywangari@yopmail.com",
+    "password": "1234567",
     "role": "user",
     "profilePhoto": "image1",
-    "firstName": "Salome",
+    "firstName": "Joy",
     "lastName": "Mwati"
 }
 
