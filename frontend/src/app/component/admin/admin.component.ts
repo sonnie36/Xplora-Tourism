@@ -25,7 +25,8 @@ export class AdminComponent implements OnInit {
     startDate: '',
     endDate: '',
     maxParticipants: 0,
-    availableSlots: 0
+    availableSlots: 0,
+    image:''
   };
   showAddTourForm = false;
   successMessage = '';
@@ -64,7 +65,8 @@ export class AdminComponent implements OnInit {
           startDate: '',
           endDate: '',
           maxParticipants: 0,
-          availableSlots: 0
+          availableSlots: 0,
+          image:''
         };
         this.showAddTourForm = false;
         this.successMessage = 'Tour added successfully!';

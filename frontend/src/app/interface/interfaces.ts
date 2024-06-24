@@ -21,5 +21,6 @@ export interface User {
     endDate: string;
     maxParticipants: number;
     availableSlots: number;
+    image?:string
   }
   

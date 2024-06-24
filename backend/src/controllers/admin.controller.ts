@@ -5,7 +5,7 @@ import { Tour } from '../interfaces/tour.interface';
 let adminService = new MyAdminService();
 
 export function validateTour(req: Request, res: Response, next: NextFunction) {
-    const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
+    const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots,image } = req.body;
     
     if (!title || !description || !destination || duration == null || price == null || !tourType || !startDate || !endDate || maxParticipants == null || availableSlots == null) {
         return res.status(400).json({ error: 'All fields are required' });
@@ -16,10 +16,11 @@ export function validateTour(req: Request, res: Response, next: NextFunction) {
 export class AdminController {
     async addTour(req: Request, res: Response) {
         try {
-            let { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
-            
+            console.log('Received request:', req.body);
+            let { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image } = req.body;
+
             let response = await adminService.createTour({
-                title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots
+                title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image
             });
 
             return res.json(response);
@@ -32,10 +33,10 @@ export class AdminController {
     async updateTour(req: Request, res: Response) {
         try {
             const { id } = req.params;  // Ensure this is extracted from params
-            const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
+            const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots,image } = req.body;
             
             const response = await adminService.updateTour({
-                id, title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots
+                id, title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots,image
             });
 
             return res.json(response);

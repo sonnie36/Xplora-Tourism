@@ -1,5 +1,6 @@
+
 CREATE PROCEDURE AddTour
-    @id VARCHAR (255),
+    @id VARCHAR(255),
     @title VARCHAR(255),
     @description VARCHAR(MAX),
     @destination VARCHAR(255),
@@ -9,10 +10,10 @@ CREATE PROCEDURE AddTour
     @startDate DATE,
     @endDate DATE,
     @maxParticipants INT,
-    @availableSlots INT
+    @availableSlots INT,
+    @image VARCHAR(255)  -- New parameter for the image
 AS
 BEGIN
-    
     INSERT INTO tours (
         id,
         title, 
@@ -24,7 +25,8 @@ BEGIN
         startDate, 
         endDate, 
         maxParticipants, 
-        availableSlots
+        availableSlots,
+        image  -- New column to insert into
     ) VALUES (
         @id,
         @title, 
@@ -36,8 +38,8 @@ BEGIN
         @startDate, 
         @endDate, 
         @maxParticipants, 
-        @availableSlots
+        @availableSlots,
+        @image  -- New value to insert
     );
 END;
-
 DROP PROCEDURE IF EXISTS AddTour;

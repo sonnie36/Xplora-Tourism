@@ -32,6 +32,7 @@ class AdminService {
                 .input('endDate', tour.endDate)
                 .input('maxParticipants', tour.maxParticipants)
                 .input('availableSlots', tour.availableSlots)
+                .input('image', tour.image || null)
                 .execute("AddTour")).rowsAffected;
             if (result[0] == 1) {
                 return { message: "Tour created successfully" };

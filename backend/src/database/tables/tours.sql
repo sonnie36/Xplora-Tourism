@@ -12,8 +12,11 @@ CREATE TABLE tours (
     availableSlots INT NOT NULL,     
     createdAt DATETIME DEFAULT GETDATE(),
     updatedAt DATETIME DEFAULT GETDATE(),
-    isDeleted BIT DEFAULT 0        
+    isDeleted BIT DEFAULT 0  ,
+    image VARCHAR(255)      
 );
+ALTER TABLE tours
+ADD image VARCHAR(255);
 
 select * from tours;
 drop table if exists tours;

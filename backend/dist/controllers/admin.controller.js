@@ -13,7 +13,7 @@ exports.AdminController = exports.validateTour = void 0;
 const admin_service_1 = require("../services/admin.service");
 let adminService = new admin_service_1.AdminService();
 function validateTour(req, res, next) {
-    const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
+    const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image } = req.body;
     if (!title || !description || !destination || duration == null || price == null || !tourType || !startDate || !endDate || maxParticipants == null || availableSlots == null) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -24,9 +24,10 @@ class AdminController {
     addTour(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
+                console.log('Received request:', req.body);
+                let { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image } = req.body;
                 let response = yield adminService.createTour({
-                    title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots
+                    title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image
                 });
                 return res.json(response);
             }
@@ -39,9 +40,9 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { id } = req.params; // Ensure this is extracted from params
-                const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots } = req.body;
+                const { title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image } = req.body;
                 const response = yield adminService.updateTour({
-                    id, title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots
+                    id, title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image
                 });
                 return res.json(response);
             }

@@ -47,6 +47,10 @@
           <label>Available Slots</label>
           <input type="number" [(ngModel)]="newTour.availableSlots" name="availableSlots" required>
         </div>
+        <div class="form-group">
+          <label>Image</label>
+          <input [(ngModel)]="newTour.image" name="image" required>
+        </div>
         <button type="submit" class="btn">Submit</button>
       </form>
     </div>
@@ -56,12 +60,24 @@
 
     <div class="tour-list">
       <h3>Existing Tours</h3>
-      <ul>
-        <li *ngFor="let tour of tours">
-          {{ tour.title }} - {{ tour.description }} - {{ tour.destination }} - {{ tour.duration }} days - ${{ tour.price }} - {{ tour.tourType }} - {{ tour.startDate }} to {{ tour.endDate }} - Max: {{ tour.maxParticipants }} - Available: {{ tour.availableSlots }}
+      <div class="tours">
+        <div *ngFor="let tour of tours" class="card">
+          <h3>{{ tour.title }}</h3>
+          <img src={{tour.image}} class="image" alt="">
+          <p> {{ tour.description }}</p>
+          <p>{{ tour.destination }} </p>
+          <h6>{{ tour.duration }}  days</h6>
+          <h4>${{ tour.price }}</h4>
+          <p>{{ tour.tourType }} </p>
+          <div class="dates">
+            <p>{{ tour.startDate }} to </p>
+            <p>{{ tour.endDate }}</p>
+          </div>
+          <p>Max: {{ tour.maxParticipants }}</p>
+          <p>Available: {{ tour.availableSlots }}</p>
           <!-- <button (click)="deleteTour(tour.id)" class="btn delete-tour">Delete</button> -->
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 

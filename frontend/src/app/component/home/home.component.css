@@ -17,6 +17,9 @@ body {
     color: white;
     text-align: center;
     padding: 100px 20px;
+    /* background-image: url("https://i.pinimg.com/236x/15/d1/2c/15d12c16f407a6c710c98f23baaf5a89.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 .hero-content h1 {

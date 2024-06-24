@@ -9,5 +9,6 @@ export interface Tour {
     startDate: Date;          
     endDate: Date;            
     maxParticipants: number;  
-    availableSlots: number;         
+    availableSlots: number; 
+    image?: string;       
 }

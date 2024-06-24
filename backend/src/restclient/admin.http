@@ -11,29 +11,31 @@ Content-Type: application/json
     "startDate": "2023-05-15T00:00:00.000Z",
     "endDate": "2023-05-18T00:00:00.000Z",
     "maxParticipants": 15,
-    "availableSlots": 10
+    "availableSlots": 10,
+    "image": "https://i.pinimg.com/236x/d7/54/74/d75474fc7743a748b218bcef972953e9.jpg"
 }
 
 ### updateTour
-PUT http://localhost:3000/admin/updateTour/d26f68d7-438a-4771-bdfa-064a30b27031
+PUT http://localhost:3000/admin/updateTour/5ac71cde-8957-478f-b510-f682ac02e59c
 Content-Type: application/json
 
 {
-    "title": "Updated Title",
-    "description": "Updated description",
-    "destination": "Updated destination",
+    "title": "Enchanting Wilderness Escape",
+    "description": "Explore the heart of the forest with our guided wilderness tour.",
+    "destination": "Greenwood Forest",
     "duration": 4,
     "price": 300.00,
-    "tourType": "Adventure",
+    "tourType": "Nature",
     "startDate": "2023-06-15T00:00:00.000Z",
     "endDate": "2023-06-19T00:00:00.000Z",
     "maxParticipants": 20,
-    "availableSlots": 15
+    "availableSlots": 15,
+    "image":"https://i.pinimg.com/236x/d7/54/74/d75474fc7743a748b218bcef972953e9.jpg"
 }
 
 
 ### delete Tour
-DELETE http://localhost:3000/admin/softDeleteTour/d26f68d7-438a-4771-bdfa-064a30b27031
+DELETE http://localhost:3000/admin/softDeleteTour/a6b19914-5929-4a12-aa38-aee863a2e7b8
 
 ### get all tours
 GET http://localhost:3000/admin/getTours
