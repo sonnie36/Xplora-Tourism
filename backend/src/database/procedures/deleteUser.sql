@@ -1,6 +1,6 @@
-CREATE PROCEDURE GetUserById
-    @userId VARCHAR(255)
+CREATE PROCEDURE SoftDeleteUser
+    @id VARCHAR(255)
 AS
 BEGIN
-    SELECT * FROM Users WHERE id = @userId;
+    UPDATE users SET isDeleted = 1 WHERE id = @id;
 END;

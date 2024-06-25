@@ -26,6 +26,15 @@ export class UserService {
   resetPassword(newPassword: string): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/resetPassword`, { newPassword });
   }
+
+  deleteUser(userId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/deleteUser/${userId}`);
+  }
+
+  // getUserDetails(token: string): Observable<User> {
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  //   return this.http.get<User>(`${this.apiUrl}/checkDetails`, { headers });
+  // }
   // checketails(token:string){
   //   return this.http.post(`${this.apiUrl}/checkToken`,{token});
   //   headers:{

@@ -8,8 +8,10 @@ CREATE TABLE Users (
     lastName VARCHAR(50) NOT NULL,
     profilePhoto VARCHAR(255),  -- Optional field for storing profile photo URL
     createdAt DATETIME DEFAULT GETDATE(),
-    updatedAt DATETIME DEFAULT GETDATE() 
+    updatedAt DATETIME DEFAULT GETDATE() ,
+     isDeleted BIT DEFAULT 0
 );
+
 
 select * from Users
 drop table Users

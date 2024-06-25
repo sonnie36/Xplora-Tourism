@@ -1,0 +1,103 @@
+/* user-details.component.css */
+
+/* General table styling */
+.manage-users table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #F0F9F7; /* Matching the registration form background */
+    color: #112C26; /* Matching the registration form text color */
+  }
+  
+  /* Table header styling */
+  .manage-users th {
+    background-color: #112C26; /* Dark green from the registration form */
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #43B19A; /* Teal color for separation */
+  }
+  
+  /* Table row styling */
+  .manage-users tr {
+    border-bottom: 1px solid #ccc; /* Light grey for row separation */
+  }
+  
+  .manage-users tr:nth-child(even) {
+    background-color: #E8F6F4; /* Very light teal for alternate rows */
+  }
+  
+  /* Table cell styling */
+  .manage-users td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  /* Profile photo styling */
+  .manage-users td img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Hover effect for table rows */
+  .manage-users tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* General container styling */
+  .manage-users {
+    padding: 20px;
+    background-color: #fff; /* Background color of the table container */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  }
+  
+  /* Heading styling */
+  .manage-users h2 {
+    margin-bottom: 20px;
+    color: #43B19A; /* Teal color */
+  }
+  
+  /* Delete button styling */
+  .manage-users .btn-delete {
+    padding: 5px 10px;
+    background-color: #ff4d4d; /* Red color for delete button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .manage-users .btn-delete:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+  }
+  
+  /* For responsive design */
+  @media (max-width: 600px) {
+    .manage-users table, .manage-users thead, .manage-users tbody, .manage-users th, .manage-users td, .manage-users tr {
+      display: block;
+    }
+    
+    .manage-users tr {
+      margin-bottom: 15px;
+    }
+    
+    .manage-users td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+    
+    .manage-users td:before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+  

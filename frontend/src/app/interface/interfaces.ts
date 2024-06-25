@@ -7,6 +7,7 @@ export interface User {
     profilePhoto?: string;
     firstName: string;
     lastName: string;
+    createdAt?: string;
   }
   
   export interface TourDetails {
@@ -21,7 +22,7 @@ export interface User {
     endDate: string;
     maxParticipants: number;
     availableSlots: number;
-    image?:string
+    image:string
   }
 export interface UpdateTour{
     id: string;

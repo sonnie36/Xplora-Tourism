@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { TourService } from '../../services/tour-service.service';
-import { TourDetails } from '../../interface/interfaces';
+  // Import UserService
+import { TourDetails, User } from '../../interface/interfaces';  // Import User and TourDetails interfaces
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterLink,UserDetailsComponent],
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']  // Fixed typo 'styleUrl' to 'styleUrls'
+  styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
   
   tours: TourDetails[] = [];
+   // Flag to control user display
+  currentSection: string = 'tours'; // Flag to control which section is displayed
+
+  // Tour details initialization
   newTour: TourDetails = {
     id: '',
     title: '',
@@ -28,6 +35,7 @@ export class AdminComponent implements OnInit {
     availableSlots: 0,
     image: ''
   };
+
   selectedTour: TourDetails = {
     id: '',
     title: '',
@@ -41,13 +49,14 @@ export class AdminComponent implements OnInit {
     maxParticipants: 0,
     availableSlots: 0,
     image: ''
-  };  // Initialize to avoid null checks
+  };
+
   showAddTourForm = false;
   showUpdateTourForm = false;
   successMessage = '';
   errorMessage = '';
 
-  constructor(private tourService: TourService) {}
+  constructor(private tourService: TourService) {}  // Inject UserService
 
   ngOnInit(): void {
     this.loadTours();
@@ -111,7 +120,7 @@ export class AdminComponent implements OnInit {
           if (index !== -1) {
             this.tours[index] = updatedTour;
           }
-          this.showUpdateTourForm = true;
+          this.showUpdateTourForm = false;
           this.successMessage = 'Tour updated successfully!';
           this.errorMessage = '';
         },
@@ -142,4 +151,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+
+  // Method to fetch and display users
+
 }

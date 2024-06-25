@@ -71,5 +71,19 @@ class UserService {
             return result.recordset;
         });
     }
+    deleteUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            const result = yield pool.request()
+                .input('id', id)
+                .execute('SoftDeleteUser');
+            if (result.rowsAffected[0] === 1) {
+                return { message: 'User deleted successfully' };
+            }
+            else {
+                return { error: 'Unable to delete user' };
+            }
+        });
+    }
 }
 exports.UserService = UserService;

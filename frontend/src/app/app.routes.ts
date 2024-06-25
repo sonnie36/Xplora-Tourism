@@ -4,11 +4,13 @@ import { LoginComponent } from './component/login/login.component';
 import { UserComponent } from './component/user/user.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { HomeComponent } from './component/home/home.component';
+import { UserDetailsComponent } from './component/user-details/user-details.component';
 
 
 export const routes: Routes = [
     {path:'',component: HomeComponent},
     {path:'login',component: LoginComponent},
     {path:'user',component:UserComponent},
-    {path:'admin',component:AdminComponent}
+    {path:'admin',component:AdminComponent},
+    {path : 'userDetails', component: UserDetailsComponent},
 ];

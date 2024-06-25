@@ -2,7 +2,7 @@ POST http://localhost:3000/admin/addTour
 Content-Type: application/json
 
 {
-    "title": "Wilderness Escape",
+    "title": "Wilderness ",
     "description": "Explore the heart of the forest with our guided wilderness tour.",
     "destination": " Forest",
     "duration": 3,
@@ -20,17 +20,17 @@ PUT http://localhost:3000/admin/updateTour/f06f8dd7-39cf-4cf7-8288-808e012786ee
 Content-Type: application/json
 
 {
-    "title": "Enchanting Wilderness Escape",
+    "title": "Wilderness Escape",
     "description": "Explore the heart of the forest with our guided wilderness tour.",
-    "destination": "Greenwood Forest",
+    "destination": " Forest",
     "duration": 4,
-    "price": 300.00,
-    "tourType": "Nature",
+    "price": 200.00,
+    "tourType": "Adventure",
     "startDate": "2023-06-15T00:00:00.000Z",
     "endDate": "2023-06-19T00:00:00.000Z",
-    "maxParticipants": 20,
+    "maxParticipants": 2,
     "availableSlots": 15,
-    "image":"https://i.pinimg.com/236x/d7/54/74/d75474fc7743a748b218bcef972953e9.jpg"
+    "image":"https://www.pinterest.com/pin/492649952889925/"
 }
 
 

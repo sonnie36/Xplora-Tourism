@@ -44,6 +44,7 @@ export class AdminService {
             .input('endDate', tour.endDate)
             .input('maxParticipants', tour.maxParticipants)
             .input('availableSlots', tour.availableSlots)
+            .input('image',tour.image || null)
             .execute('UpdateTour');
     
         if (result.rowsAffected[0] === 1) {

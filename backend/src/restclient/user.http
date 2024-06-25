@@ -2,13 +2,13 @@ POST http://localhost:3000/user/addUser
 Content-Type: application/json
 
 {
-    "username": "carol",
-    "email": "carol@yopmail.com",
+    "username": "Njeri",
+    "email": "njeri@yopmail.com",
     "password": "12345678",
     "role": "user",
-    "profilePhoto": "image1",
-    "firstName": "Carol",
-    "lastName": "Carol"
+    "profilePhoto": "image2",
+    "firstName": "Valentine ",
+    "lastName": "Njeri"
 }
 
 ### Login
@@ -16,12 +16,12 @@ POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-    "email": "carol@yopmail.com",
+    "email": "njeri@yopmail.com",
     "password": "12345678"
 }
 ### Get all users
 GET http://localhost:3000/user/getUsers
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyYjlhNDI0LTRkYTAtNDQ1Ny1iNDJiLWY1M2QxYjYwZTI0YSIsInVzZXJuYW1lIjoiY2Fyb2wiLCJlbWFpbCI6ImNhcm9sQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJDYXJvbCIsImxhc3ROYW1lIjoiQ2Fyb2wiLCJwcm9maWxlUGhvdG8iOiJpbWFnZTEiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI0VDE1OjU5OjA4LjMyN1oiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI0VDE1OjU5OjA4LjMyN1oiLCJpYXQiOjE3MTkyMzM5ODMsImV4cCI6MTcxOTI0MTE4M30.GcTTI69VoNdJc9GNwWPxtiGHcVpQ13QunN3plt-QcWA
+
 
 ### Reset password
 PUT http://localhost:3000/user/resetPassword/
@@ -32,4 +32,9 @@ Content-Type: application/json
     "newPassword": "NewPassword123"
 }
 
+### delete User
+DELETE http://localhost:3000/user/deleteUser/92b9a424-4da0-4457-b42b-f53d1b60e24a
 
+### Get user details
+GET http://localhost:3000/user/checkDetails
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE4YzBhZDY5LWQ4ZTMtNGFjZi05YjRkLTJlMGNlNjNjYTc3ZSIsInVzZXJuYW1lIjoiTmplcmkiLCJlbWFpbCI6Im5qZXJpQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJmaXJzdE5hbWUiOiJWYWxlbnRpbmUgIiwibGFzdE5hbWUiOiJOamVyaSIsInByb2ZpbGVQaG90byI6ImltYWdlMiIsImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjVUMDY6NDM6MDUuNDUwWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjVUMDY6NDM6MDUuNDUwWiIsImlhdCI6MTcxOTI4NzM2MiwiZXhwIjoxNzE5Mjk0NTYyfQ.ZqJZzh7h8uNupAkEvEXkSgvryvwwnNcKga8A1XXAd2k

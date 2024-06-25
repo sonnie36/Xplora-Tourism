@@ -4,7 +4,7 @@
     <ul>
       <li><a href="#manage-tours">Manage Tours</a></li>
       <li><a href="#manage-profile">Manage Profile</a></li>
-      <li><a href="#manage-users">Manage Users</a></li>
+      <li routerLink="/userDetails">Manage Users</li>
     </ul>
   </div>
 
@@ -129,7 +129,7 @@
 
       <div class="tour-cards">
         <div class="tour-card" *ngFor="let tour of tours">
-          <img [src]="tour.image" alt="Tour Image">
+          <img src={{tour.image}} alt="Tour Image">
           <h3>{{ tour.title }}</h3>
           <p>{{ tour.description }}</p>
           <p><strong>Destination:</strong> {{ tour.destination }}</p>
@@ -141,7 +141,7 @@
       </div>
     </div>
 
-    <div id="manage-profile" class="manage-profile">
+    <!-- <div id="manage-profile" class="manage-profile">
       <h2>Manage Profile</h2>
       <p>This section allows you to manage your profile information.</p>
       <form>
@@ -159,9 +159,9 @@
         </div>
         <button type="submit" class="btn">Save Changes</button>
       </form>
-    </div>
+    </div> -->
 
-    <div id="manage-users" class="manage-users">
+    <!-- <div id="manage-users" class="manage-users">
       <h2>Manage Users</h2>
       <p>This section allows you to manage user accounts.</p>
       <ul>
@@ -169,6 +169,6 @@
         <li>User 2 <button class="btn">Edit</button> <button class="btn">Delete</button></li>
         <li>User 3 <button class="btn">Edit</button> <button class="btn">Delete</button></li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </div>

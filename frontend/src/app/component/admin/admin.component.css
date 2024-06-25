@@ -126,7 +126,7 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; 
+  margin: 0 auto; 
   padding: 20px;
   border: 1px solid #888;
   width: 80%; 
@@ -160,7 +160,7 @@
 
 .tour-card img {
   width: 100%;
-  height: auto;
+  height: 250px;
   border-radius: 5px;
 }
 

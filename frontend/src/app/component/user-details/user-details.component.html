@@ -1,0 +1,30 @@
+
+<div id="manage-users" class="manage-users">
+  <h2>Manage Users</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role</th>
+        <th>Profile Photo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{user.profilePhoto}}</td>
+        <td>
+            <button class="btn-delete" (click)="deleteUser(user.id)">Delete</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -38,7 +38,7 @@ export class AdminController {
             const response = await adminService.updateTour({
                 id, title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots,image
             });
-
+console.log('response:', req.body);
             return res.json(response);
         } catch (error) {
             console.error('Error in updateTour controller:', error);

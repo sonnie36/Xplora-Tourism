@@ -9,7 +9,8 @@ CREATE PROCEDURE UpdateTour
     @startDate DATE,
     @endDate DATE,
     @maxParticipants INT,
-    @availableSlots INT
+    @availableSlots INT,
+    @image VARCHAR(255)  -- Parameter for the image
 AS
 BEGIN
     UPDATE tours
@@ -24,8 +25,10 @@ BEGIN
         endDate = @endDate,
         maxParticipants = @maxParticipants,
         availableSlots = @availableSlots,
+        image = @image,  -- Update the image column
         updatedAt = GETDATE()
     WHERE id = @id;
 END;
+
 
 DROP PROCEDURE IF EXISTS UpdateTour;

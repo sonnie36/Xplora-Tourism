@@ -59,4 +59,17 @@ export class UserService {
         let result = await pool.request().execute('GetAllUsers');
         return result.recordset;
     }
+
+    async deleteUser(id: string) {
+        const pool = await mssql.connect(sqlConfig);
+        const result = await pool.request()
+            .input('id', id)
+            .execute('SoftDeleteUser');
+
+        if (result.rowsAffected[0] === 1) {
+            return { message: 'User deleted successfully' };
+        } else {
+            return { error: 'Unable to delete user' };
+        }
+    }
 }

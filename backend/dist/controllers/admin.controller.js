@@ -44,6 +44,7 @@ class AdminController {
                 const response = yield adminService.updateTour({
                     id, title, description, destination, duration, price, tourType, startDate, endDate, maxParticipants, availableSlots, image
                 });
+                console.log('response:', req.body);
                 return res.json(response);
             }
             catch (error) {

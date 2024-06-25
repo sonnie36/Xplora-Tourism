@@ -76,5 +76,35 @@ class UserController {
             }
         });
     }
+    checkDetails(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (req.info) {
+                    return res.status(200).json({
+                        info: req.info
+                    });
+                }
+                else {
+                    return res.status(404).json({ error: "No details found" });
+                }
+            }
+            catch (error) {
+                console.error("Error occurred in checkDetails:", error);
+                return res.status(500).json({ error: "An internal server error occurred" });
+            }
+        });
+    }
+    deleteUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { id } = req.params;
+                const response = yield userService.deleteUser(id);
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
 }
 exports.UserController = UserController;
