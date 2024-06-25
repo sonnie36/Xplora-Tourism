@@ -18,13 +18,12 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const verifyToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const authHeader = req.headers.authorization;
-        if (!authHeader) {
+        const token = req.headers.token;
+        if (!token) {
             return res.status(401).json({
                 error: 'You do not have access'
             });
         }
-        const token = authHeader.split(' ')[1];
         const data = jsonwebtoken_1.default.verify(token, process.env.SECRET_KEY);
         req.info = data;
         next();

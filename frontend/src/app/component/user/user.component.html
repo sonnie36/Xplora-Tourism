@@ -1,16 +1,33 @@
-<div class="dashboard-container">
+<div class="container">
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li routerLink="/explore">Explore Tours</li>
+      <li><a href="#">Book Tour</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Reviews</a></li>
+    </ul>
+  </div>
+  <div class="dashboard-container">
     <h1>Welcome, [User]!</h1>
     <div class="bookings">
       <h2>Your Bookings</h2>
       <div class="booking-list">
-        <!-- Booking items go here -->
+        <div class="no-bookings">
+          <h3>No trips booked...yet!</h3>
+          <p>Time to dust off your bags and start planning your next adventure.</p>
+          <button>Start searching</button>
+        </div>
       </div>
     </div>
     <div class="reviews">
       <h2>Your Reviews</h2>
       <div class="review-list">
-        <!-- Review items go here -->
+        <div class="no-reviews">
+          <h3>No reviews yet!</h3>
+          <p>You haven't reviewed any tours yet. Share your experiences to help others.</p>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>

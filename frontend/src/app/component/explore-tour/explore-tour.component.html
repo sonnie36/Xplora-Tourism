@@ -1,0 +1,31 @@
+<div class="explore-tour-container">
+    <h1>Explore Tours</h1>
+    <input type="text" [(ngModel)]="searchType" (input)="filterTours()" placeholder="Search by tour type..." class="search-bar">
+    
+    <div *ngIf="filteredTours.length > 0" class="tour-list">
+      <div *ngFor="let tour of filteredTours" class="tour-item" (click)="openBookingModal(bookingModal, tour)">
+        <h2>{{ tour.title }}</h2>
+        <img src={{tour.image}} class="image" alt="">
+        <p>Type: {{ tour.tourType }}</p>
+        <p>Price: {{ tour.price | currency }}</p>
+      </div>
+    </div>
+    <div *ngIf="filteredTours.length === 0" class="no-tours">
+      <p>No tours available for the selected type.</p>
+    </div>
+  
+    <ng-template #bookingModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Book Tour</h4>
+        <button type="button" class="close" (click)="modal.dismiss()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to book the tour: {{ selectedTour?.title }}?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="bookTour()">Book</button>
+      </div>
+    </ng-template>
+  </div>
+  

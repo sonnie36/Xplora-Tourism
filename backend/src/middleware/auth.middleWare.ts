@@ -11,15 +11,13 @@ export interface extendedRequest extends Request {
 
 export const verifyToken = async (req: extendedRequest, res: Response, next: NextFunction) => {
     try {
-        const authHeader = req.headers.authorization;
+        const token = req.headers.token as string;
 
-        if (!authHeader) {
+        if (!token) {
             return res.status(401).json({
                 error: 'You do not have access'
             });
         }
-
-        const token = authHeader.split(' ')[1];
 
         const data = jwt.verify(token, process.env.SECRET_KEY as string) as token_details;
 

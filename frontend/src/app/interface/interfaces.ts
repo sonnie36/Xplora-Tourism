@@ -39,3 +39,19 @@ export interface UpdateTour{
     image?: string;
   
 }
+export interface token_details{
+  info?:{
+    id:string,
+    username:string,
+    email:string,
+    firstName:string,
+
+  }
+  error?:{
+    message:string
+  }
+}
+export interface login_details{
+  email:string,
+  password:string
+}

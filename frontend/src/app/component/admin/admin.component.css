@@ -4,20 +4,20 @@
 }
 
 .sidebar {
-  width: 200px;
-  background-color: #333;
+  width: 220px;
+  background-color: #112C26;
   color: white;
-  padding: 15px;
+  padding: 20px;
   position: fixed;
   height: 100%;
 }
 
 .sidebar h2 {
-  text-align: center;
+  color: #43B19A;
 }
 
 .sidebar ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 
@@ -28,6 +28,10 @@
 .sidebar ul li a {
   color: white;
   text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
 }
 
 .main-content {
@@ -156,6 +160,7 @@
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
+  width:250px;
 }
 
 .tour-card img {

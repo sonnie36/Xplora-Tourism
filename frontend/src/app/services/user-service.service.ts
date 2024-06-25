@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../interface/interfaces';
+import { User, token_details } from '../interface/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +31,18 @@ export class UserService {
     return this.http.delete<void>(`${this.apiUrl}/deleteUser/${userId}`);
   }
 
+  getUserDetails(token: string): Observable<token_details> {
+    const headers = { 'token': token };
+    return this.http.get<token_details>(`${this.apiUrl}/checkDetails`, { headers });
+  }
   // getUserDetails(token: string): Observable<User> {
   //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   //   return this.http.get<User>(`${this.apiUrl}/checkDetails`, { headers });
   // }
   // checketails(token:string){
-  //   return this.http.post(`${this.apiUrl}/checkToken`,{token});
-  //   headers:{
-  //     'token': token;
-  //   }
+  //     return this.http.post(`${this.apiUrl}/checkToken`,{token});
+  //     headers:{
+  //       'token': token;
+  //     }
   // }
 }
