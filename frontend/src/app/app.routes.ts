@@ -6,6 +6,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { HomeComponent } from './component/home/home.component';
 import { UserDetailsComponent } from './component/user-details/user-details.component';
 import { ExploreTourComponent } from './component/explore-tour/explore-tour.component';
+import { BookingsComponent } from './component/bookings/bookings.component';
 
 
 export const routes: Routes = [
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:'admin',component:AdminComponent},
     {path : 'userDetails', component: UserDetailsComponent},
     {path: 'register',component: RegisterComponent},
-    {path:'explore',component:ExploreTourComponent}
+    {path:'explore',component:ExploreTourComponent},
+    {path:'bookings',component:BookingsComponent}
 ];

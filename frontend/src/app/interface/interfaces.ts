@@ -58,4 +58,6 @@ export interface login_details{
 export interface bookingDetails{
   userId:string
   tourId: string
+  bookingDate?: string;
+  status?: string;
 }
