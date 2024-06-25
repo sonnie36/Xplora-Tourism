@@ -33,5 +33,43 @@ class BookingService {
             }
         });
     }
+    getUserBookings(userId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            let result = yield pool.request()
+                .input('userId', userId)
+                .query('SELECT * FROM bookings WHERE userId = @userId');
+            return result.recordset;
+        });
+    }
+    cancelBooking(bookingId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            let result = yield pool.request()
+                .input('id', bookingId)
+                .query('DELETE FROM bookings WHERE id = @id');
+            if (result.rowsAffected[0] === 1) {
+                return { message: 'Booking canceled successfully' };
+            }
+            else {
+                return { error: 'Unable to cancel booking' };
+            }
+        });
+    }
+    updateBookingStatus(bookingId, status) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
+            let result = yield pool.request()
+                .input('id', bookingId)
+                .input('status', status)
+                .query('UPDATE bookings SET status = @status WHERE id = @id');
+            if (result.rowsAffected[0] === 1) {
+                return { message: 'Booking status updated successfully' };
+            }
+            else {
+                return { error: 'Unable to update booking status' };
+            }
+        });
+    }
 }
 exports.BookingService = BookingService;

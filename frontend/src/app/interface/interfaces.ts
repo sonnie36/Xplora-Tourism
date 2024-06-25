@@ -55,3 +55,7 @@ export interface login_details{
   email:string,
   password:string
 }
+export interface bookingDetails{
+  userId:string
+  tourId: string
+}

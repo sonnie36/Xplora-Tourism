@@ -25,5 +25,41 @@ class BookingController {
             }
         });
     }
+    getUserBookings(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { userId } = req.params;
+                const bookings = yield bookingService.getUserBookings(userId);
+                return res.json(bookings);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
+    cancelBooking(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { bookingId } = req.body;
+                const response = yield bookingService.cancelBooking(bookingId);
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
+    updateBookingStatus(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { bookingId, status } = req.body;
+                const response = yield bookingService.updateBookingStatus(bookingId, status);
+                return res.json(response);
+            }
+            catch (error) {
+                return res.json({ error });
+            }
+        });
+    }
 }
 exports.BookingController = BookingController;

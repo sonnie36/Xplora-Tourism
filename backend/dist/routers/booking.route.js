@@ -5,4 +5,7 @@ const booking_controller_1 = require("../controllers/booking.controller");
 const controller = new booking_controller_1.BookingController();
 const booking_router = (0, express_1.Router)();
 booking_router.post('/bookTour', controller.bookTour);
+booking_router.get('/userBookings/:userId', controller.getUserBookings);
+booking_router.post('/cancelBooking', controller.cancelBooking);
+booking_router.put('/updateBookingStatus', controller.updateBookingStatus);
 exports.default = booking_router;

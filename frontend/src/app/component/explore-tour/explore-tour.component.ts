@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TourService } from '../../services/tour-service.service';
-import { TourDetails } from '../../interface/interfaces';
+import { BookingService } from '../../services/booking.service';
+import { TourDetails, bookingDetails } from '../../interface/interfaces';
 
 @Component({
   selector: 'app-explore-tour',
@@ -16,8 +17,10 @@ export class ExploreTourComponent implements OnInit {
   filteredTours: TourDetails[] = [];
   selectedTour: TourDetails | null = null;
   searchType: string = '';
+  userId: string = '92b9a424-4da0-4457-b42b-f53d1b60e24a';  // Replace with actual user ID source
+  showModal: boolean = false;
 
-  constructor(private tourService: TourService) {}
+  constructor(private tourService: TourService, private bookingService: BookingService) {}
 
   ngOnInit(): void {
     this.loadTours();
@@ -39,15 +42,29 @@ export class ExploreTourComponent implements OnInit {
       this.loadTours();
     }
   }
-
-  openBookingModal(content: any, tour: TourDetails): void {
+  openBookingModal(tour: TourDetails): void {
     this.selectedTour = tour;
-   
+    this.showModal = true;
+  }
+
+  closeBookingModal(): void {
+    this.showModal = false;
   }
 
   bookTour(): void {
-    // Implement booking logic here
-    alert(`Tour booked: ${this.selectedTour?.title}`);
-    
+    if (this.selectedTour) {
+      const booking: bookingDetails = {
+        userId: this.userId,
+        tourId: this.selectedTour.id
+      };
+      this.bookingService.bookTour(booking).subscribe(response => {
+        if (response.message) {
+          alert(`Tour booked: ${this.selectedTour?.title}`);
+        } else {
+          alert(`Failed to book tour: ${response.error}`);
+        }
+        this.closeBookingModal();
+      });
+    }
   }
 }

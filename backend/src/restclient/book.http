@@ -5,3 +5,23 @@ Content-Type: application/json
     "userId": "92b9a424-4da0-4457-b42b-f53d1b60e24a",
     "tourId": "f06f8dd7-39cf-4cf7-8288-808e012786ee"
 }
+
+### Get All Bookings for a User
+GET http://localhost:3000/booking/userBookings/92b9a424-4da0-4457-b42b-f53d1b60e24a
+
+### Cancel a Booking
+POST http://localhost:3000/booking/cancelBooking
+Content-Type: application/json
+
+{
+    "bookingId": "17ef0449-a4c9-40ec-bbed-4fe83ec703d9"
+}
+
+### Update Booking Status
+PUT http://localhost:3000/booking/updateBookingStatus
+Content-Type: application/json
+
+{
+    "bookingId": "0a559003-4ccc-44ed-87b7-d407077d3219",
+    "status": "Confirmed"
+}
