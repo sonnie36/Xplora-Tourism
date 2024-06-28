@@ -8,14 +8,16 @@ import { login_details } from '../../interface/login';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private userService: UserService, private router: Router) {
-    
-  }
+  loginSuccess: string | null = null;
+  loginError: string | null = null;
+
+  constructor(private userService: UserService, private router: Router) {}
+
   login(form: NgForm): void {
     if (form.valid) {
       const details: login_details = {
@@ -26,14 +28,16 @@ export class LoginComponent {
       this.userService.loginUser(details).subscribe(response => {
         if (response.token) {
           localStorage.setItem('token', response.token); // Store the token in local storage
-          console.log('Login successful!');
-          this.router.navigate(['/user']); // Redirect to a specific route on successful login
+          this.loginSuccess = 'Login successful!';
+          this.loginError = null;
+          setTimeout(() => {
+            this.router.navigate(['/user']); // Redirect to a specific route on successful login
+          }, 2000); // Delay redirection to show the success message
         } else {
-          console.log('Login failed:', response.error);
+          this.loginError = response.error;
+          this.loginSuccess = null;
         }
       });
     }
   }
-
 }
-

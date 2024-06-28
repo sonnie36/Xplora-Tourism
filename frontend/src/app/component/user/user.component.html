@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="sidebar">
     <h2>Menu</h2>
@@ -9,17 +10,23 @@
     </ul>
   </div>
   <div class="dashboard-container">
-    <h1>Welcome, [User]!</h1>
+    <div class="navhome">
+      <h1>Welcome, {{ user?.username }}!</h1>
+    <div class="img">
+      <img src={{user?.profilePhoto}} class="profile" alt="">
+    </div>
+    </div>
+
+    <!-- <img *ngIf="user?.profilePhoto" [src]="user.profilePhoto" alt="{{ user?.username }}'s Profile Photo"> -->
     <div class="bookings">
       <h2>Your Bookings</h2>
       <div class="booking-list">
         <div class="no-bookings">
           <h3>No trips booked...yet!</h3>
           <p>Time to dust off your bags and start planning your next adventure.</p>
-          <button>Start searching</button>
+          <button routerLink="/explore">Start searching</button>
         </div>
       </div>
     </div>
-    
   </div>
 </div>

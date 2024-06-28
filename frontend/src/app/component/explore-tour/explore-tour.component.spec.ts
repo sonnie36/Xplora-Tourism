@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExploreTourComponent } from './explore-tour.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ExploreTourComponent', () => {
   let component: ExploreTourComponent;
@@ -8,7 +9,7 @@ describe('ExploreTourComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExploreTourComponent]
+      imports: [ExploreTourComponent,HttpClientTestingModule]
     })
     .compileComponents();
 

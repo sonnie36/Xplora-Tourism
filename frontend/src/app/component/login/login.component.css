@@ -109,3 +109,17 @@ body {
     color: #43B19A;
     cursor: pointer;
 }
+/* login.component.css */
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  

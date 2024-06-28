@@ -71,6 +71,10 @@ body {
 
 .no-bookings h3, .no-reviews h3 {
   color: #43B19A;
+  margin-bottom: 15px;
+}
+.no-bookings p{
+  margin-bottom: 15px;
 }
 
 .no-bookings button {
@@ -84,4 +88,23 @@ body {
 
 .no-bookings button:hover {
   background-color: #36997D;
+}
+.img{
+  width:60px;
+  height : 60px;
+  border-radius:50%;
+  background-color: #43B19A;
+
+}
+.profile{
+  width:60px;
+  height:60px;
+  border-radius: 50%;
+}
+.navhome{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
 }

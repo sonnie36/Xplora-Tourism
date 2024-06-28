@@ -35,14 +35,8 @@ export class UserService {
     const headers = { 'token': token };
     return this.http.get<token_details>(`${this.apiUrl}/checkDetails`, { headers });
   }
-  // getUserDetails(token: string): Observable<User> {
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   return this.http.get<User>(`${this.apiUrl}/checkDetails`, { headers });
-  // }
-  // checketails(token:string){
-  //     return this.http.post(`${this.apiUrl}/checkToken`,{token});
-  //     headers:{
-  //       'token': token;
-  //     }
+  // getUserDetails(token: string): Observable<token_details> {
+  //   const headers = new HttpHeaders({ 'token': token });
+  //   return this.http.get<token_details>(`${this.apiUrl}/checkDetails`, { headers });
   // }
 }

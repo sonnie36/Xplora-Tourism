@@ -45,6 +45,7 @@ export interface token_details{
     username:string,
     email:string,
     firstName:string,
+    profilePhoto?:string
 
   }
   error?:{
